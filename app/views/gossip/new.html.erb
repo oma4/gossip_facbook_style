@@ -1,0 +1,54 @@
+<html>
+<div class="card text-center mb-3">
+  <div class="card-body">
+  <body>
+    <img src="https://www.dictionary.com/e/wp-content/uploads/2017/11/words_for_gossip3.jpg" height="200"  >
+
+  <% if @gossip !=nil%>
+  <div class="card text-white bg-danger mb-3">
+      <% @gossip.errors.each do |attr, msg|  %>
+      <%= attr %> <%= msg %>
+      <% end %>
+      <br/>
+      <%= " le potin est vide!! " %>
+  </div>
+  <% end %>
+
+    <div class="container">
+      <h1> New potin !</h1>
+      <%= form_tag url_for(action: 'create'), method: "post" do %>
+        <input type="hidden" name="authenticity_token" value= <%= form_authenticity_token %> >
+        <br />
+        <div class="row justify-content-center align-self-center mx-5">
+          <div class="col-3 text-center font-weight-bold">
+          <%= label_tag 'Titre : ' %>
+          </div>
+          <div class="col-3">
+          <%= text_field_tag 'title', value = nil, options = {style:"height:30px;width:300px"} %>
+          </div>
+        </div>     
+        <br />
+
+        <div class="row justify-content-center align-self-center mx-5">
+          <div class="col-3 text-center font-weight-bold">
+            <%= label_tag 'Potin : ' %>
+          </div>
+          <div class="col-3">
+            <%= text_field_tag 'content', value = nil, options = {style:"height:100px;width:300px;vertical-align:text-top"}%>
+          </div>
+        </div>
+        <br />
+        <%= submit_tag "Enregistrer", class: 'btn btn-info btn-lg btn-submit'  %>
+      <% end %>
+
+    </div>
+    <br/>
+    <br/>
+   
+    
+
+
+  </body>
+</div>
+</div>
+</html>

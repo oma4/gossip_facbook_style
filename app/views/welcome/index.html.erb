@@ -1,0 +1,43 @@
+
+<div class="card bg-dark text-white">
+  <img src=" https://psmag.com/.image/t_share/MTI3NTgyNTM1ODM1NDQ3MjY2/gossip-graphic.jpg" alt="..." height="350" >
+  
+  <div class="card-img-overlay">
+    <center> 
+    <h5 class="card-title">
+      <h1 class="display-3" > <font color="blue" > Welcome!</font> <%= params[:first_name] %></h1> </h5>
+    <p class="card-text"> <font size="6" color="blue"> Ici c'est notre super site de potins, il est chouette, non ?. </font></p>
+<a class="btn btn-primary" <%= link_to "Soumettre un Gossip", new_gossip_path%> </a>
+</center> 
+  </div>
+</div>
+
+<p>
+  
+</p> 
+<center> 
+<h2> <font color="blue"> All gossips </font> </h2>
+</center>
+<p>
+  
+</p>
+<section>
+<div class="row">
+<%Gossip.all.each do |gossip|%>
+<div class="col-sm">
+  
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="Generic placeholder image" width="140" height="140">
+            <div class="card-header">
+     <%= link_to "#{User.find(gossip.user_id).first_name} #{User.find(gossip.user_id).last_name}", author_path(gossip.user_id), :class =>"text-muted p-0"%>
+        </div>
+            <p><%=gossip.title%></p>
+            <p><a class="btn btn-primary" <%= link_to "Lire", gossip_path(gossip.id)%> </a></p>
+      </footer>
+    </blockquote>
+  </div>
+</div>
+
+<%end%>
+</div>
+</section>

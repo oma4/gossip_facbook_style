@@ -1,0 +1,26 @@
+
+
+<div class="card">
+  
+  <center> 
+  <div class="card-body">
+    <h5 class="card-title"><%= @city.name%></h5>
+    
+    </div>
+    </center>
+  </div>
+  <h2> Potins de cette ville </h2>
+  <div class="row">
+  	<% @gossips.each do |gossip| %>
+	<% if gossip.user.city_id == @city.id %>
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="Generic placeholder image" width="140" height="140">
+            <div class="card-header">
+    	<%= User.find(gossip.user_id).first_name %>  <%= User.find(gossip.user_id).last_name %>
+        </div>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            
+          </div><!-- /.col-lg-4 -->
+          <% end %>
+  <% end %>      
+        </div><!-- /.row -->
